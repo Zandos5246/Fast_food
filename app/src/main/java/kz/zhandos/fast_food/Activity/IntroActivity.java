@@ -1,5 +1,6 @@
 package kz.zhandos.fast_food.Activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -29,17 +30,14 @@ public class IntroActivity extends BaseActivity {
     }
 
     private void setVariable() {
-        binding.LoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+        binding.LoginBtn.setOnClickListener(view -> {
+            if(mAuth.getCurrentUser()!=null){
+                startActivity(new Intent(IntroActivity.this, MainActivity.class));
+            }else{
+                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
             }
-        });
-        binding.SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
         });
+        binding.SignUp.setOnClickListener(view -> startActivity(new Intent(IntroActivity.this, SignupActivity.class)));
     }
 }
