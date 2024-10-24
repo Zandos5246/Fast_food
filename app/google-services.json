@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "48207526890",
+    "project_id": "fast-food-3c038",
+    "storage_bucket": "fast-food-3c038.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48207526890:android:c345b9138e2cd4e72a1093",
+        "android_client_info": {
+          "package_name": "kz.zhandos.fast_food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAewCgDGH8BJPPXLgkI3RGGfyyINWLzSGc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
