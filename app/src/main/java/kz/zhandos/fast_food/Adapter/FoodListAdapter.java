@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -22,35 +21,33 @@ import kz.zhandos.fast_food.Activity.DetailActivity;
 import kz.zhandos.fast_food.Domain.Foods;
 import kz.zhandos.fast_food.R;
 
-public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.viewholder> {
+public class FoodListAdapter extends RecyclerView.Adapter<FoodListAdapter.viewholder> {
+
 
     ArrayList<Foods> items;
     Context context;
-
-    public BestFoodsAdapter(ArrayList<Foods> items) {
+    public FoodListAdapter(ArrayList<Foods> items) {
         this.items = items;
     }
-
     @NonNull
     @Override
-    public BestFoodsAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        View inflate = LayoutInflater.from(parent.getContext()).inflate(R.layout.viewholder_best_deal, parent,false);
+    public FoodListAdapter.viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context=parent.getContext();
+        View inflate = LayoutInflater.from(context).inflate(R.layout.viewholder_list_food,parent,false);
         return new viewholder(inflate);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BestFoodsAdapter.viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull FoodListAdapter.viewholder holder, int position) {
         holder.titleTxt.setText(items.get(position).getTitle());
-        holder.priceTxt.setText("$"+items.get(position).getPrice());
         holder.timeTxt.setText(items.get(position).getTimeValue()+"min");
-        holder.starTxt.setText(""+items.get(position).getStar());
+        holder.priceTxt.setText("$"+items.get(position).getPrice());
+        holder.rateTxt.setText(""+items.get(position).getStar());
 
         Glide.with(context)
                 .load(items.get(position).getImagePath())
                 .transform(new CenterCrop(),new RoundedCorners(30))
                 .into(holder.pic);
-
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
@@ -64,16 +61,16 @@ public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.view
         return items.size();
     }
 
-    public static class viewholder extends RecyclerView.ViewHolder {
-        TextView titleTxt,priceTxt,starTxt,timeTxt;
+    public class viewholder extends RecyclerView.ViewHolder {
+        TextView titleTxt,priceTxt,rateTxt,timeTxt;
         ImageView pic;
         public viewholder(@NonNull View itemView) {
             super(itemView);
             titleTxt=itemView.findViewById(R.id.titleTxt);
             priceTxt=itemView.findViewById(R.id.priceTxt);
-            starTxt=itemView.findViewById(R.id.starTxt);
+            rateTxt=itemView.findViewById(R.id.rateTxt);
             timeTxt=itemView.findViewById(R.id.timeTxt);
-            pic=itemView.findViewById(R.id.pic);
+            pic=itemView.findViewById(R.id.img);
 
         }
     }

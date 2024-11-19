@@ -1,6 +1,7 @@
 package kz.zhandos.fast_food.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 
 import java.util.ArrayList;
 
+import kz.zhandos.fast_food.Activity.ListFoodsActivity;
 import kz.zhandos.fast_food.Domain.Category;
 import kz.zhandos.fast_food.Domain.Foods;
 import kz.zhandos.fast_food.R;
@@ -82,6 +84,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 .load(drawableRecourceId)
                 .into(holder.pic);
 
+        holder.itemView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, ListFoodsActivity.class);
+            intent.putExtra("CategoryId",items.get(position).getId());
+            intent.putExtra("CategoryName",items.get(position).getName());
+            context.startActivity(intent);
+        });
     }
 
     @Override

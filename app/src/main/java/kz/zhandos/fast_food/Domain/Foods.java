@@ -1,6 +1,8 @@
 package kz.zhandos.fast_food.Domain;
 
-public class Foods {
+import java.io.Serializable;
+
+public class Foods implements Serializable {
     private int CategoryId;
     private String Description;
     private boolean Bestfood;

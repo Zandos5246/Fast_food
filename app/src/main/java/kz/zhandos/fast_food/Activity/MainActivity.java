@@ -2,6 +2,7 @@ package kz.zhandos.fast_food.Activity;
 
 import static androidx.recyclerview.widget.RecyclerView.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +52,23 @@ public class MainActivity extends BaseActivity {
         initPrice();
         initBestFood();
         initCategory();
+        setVariable();
+    }
+
+    private void setVariable() {
+        binding.logoutBtn.setOnClickListener(view -> {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        });
+        binding.searchBtn.setOnClickListener(view -> {
+            String text = binding.searchEdt.getText().toString();
+            if(!text.isEmpty()){
+                Intent intent = new Intent(MainActivity.this, ListFoodsActivity.class);
+                intent.putExtra("text",text);
+                intent.putExtra("isSearch",true);
+                startActivity(intent);
+            }
+        });
     }
 
 
