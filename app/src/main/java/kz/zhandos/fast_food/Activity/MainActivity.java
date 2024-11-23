@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        binding.cartBtn.setOnClickListener(view -> startActivity(new Intent(MainActivity.this,CartActivity.class)));
     }
 
 
