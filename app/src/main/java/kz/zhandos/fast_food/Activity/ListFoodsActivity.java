@@ -29,6 +29,7 @@ public class ListFoodsActivity extends BaseActivity {
     ActivityListFoodsBinding binding;
     private RecyclerView.Adapter adapterListFood;
     private int categoryId;
+
     private String categoryName;
     private String searchText;
     private boolean isSearch;
@@ -47,6 +48,7 @@ public class ListFoodsActivity extends BaseActivity {
     private void setVariable() {
 
     }
+
 
     private void initList() {
         DatabaseReference myRef = database.getReference("Foods");

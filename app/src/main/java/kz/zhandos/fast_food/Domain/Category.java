@@ -1,7 +1,7 @@
 package kz.zhandos.fast_food.Domain;
 
 public class Category {
-    private int id;
+    private int Id;
     private String ImagePath;
     private String Name;
 
@@ -9,11 +9,11 @@ public class Category {
     public Category() {
     }
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getImagePath() {
@@ -29,7 +29,7 @@ public class Category {
     }
 
     public void setName(String name) {
-        Name = name;
+        this.Name = name;
     }
 
 }
